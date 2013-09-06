@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MariasBilder</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <title>→ marias bilder ←</title>
+    <meta name="description" content="marias bilder - Digital Art, Acrylbilder, Grußkarten, Logos und mehr.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="wrapper">
+    <header>
+      <a href="/"></a>  
+    </header>
+    <div id="inner">
+      <div id="container">
+        <nav>
+          <ul>
+            <li><%= link_to 'Startseite', show_latest_path, class: (params[:controller] == 'show' && params[:action] == 'latest' ? 'current' : '') %></li>
+          </ul>
+          <hr />
+          <div class="secondary">
+            <ul>
+              <% Category.all.each do |category| %>
+              <li><%= link_to category.title, "/#{category.id}/#{category.title.urlify}", class: (category == @current_category ? 'current' : '') %></li>
+              <ul>
+                <% @nav_sub_categories.each do |sub_category| %>
+                  <li><%= link_to sub_category.title, "/#{category.id}/#{category.title.urlify}/#{sub_category.id}/#{sub_category.title.urlify}",
+                    class: (sub_category == @current_sub_category ? 'current' : '') %></li>
+                <% end if category == @current_category %>
+              </ul>
+              <% end %>
+            </ul>
+          </div>
+          <hr />
+          <div class="secondary">
+            <ul>
+              <li><%= link_to 'Vita', vita_path, class: (params[:controller] == 'meta' && params[:action] == 'vita' ? 'current' : '') %></li>
+              <li><%= link_to 'Kontakt', contact_path, class: (params[:controller] == 'meta' && params[:action] == 'contact' ? 'current' : '') %></li>
+              <li><%= link_to 'Impressum', imprint_path, class: (params[:controller] == 'meta' && params[:action] == 'imprint' ? 'current' : '') %></li>
+            </ul>
+            <hr />
+            <small>
+              &copy; 2013 Maria Klara Kuiter
+            </small>
+          </div>
+        </nav>
+        <div id="content">
+          <%= link_to '<strong id="back">&lt; Zurück zur Verwaltung</strong>'.html_safe, admin_path unless @admin.nil? || controller.controller_name == 'admin' %>
+          <% if flash[:notice] %>
+          <div class="notice">
+            <%= flash[:notice] %>
+          </div>
+          <% end %>
+          <% if flash[:alert] %>
+          <div class="alert">
+            <%= flash[:alert] %>
+          </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <footer>
+    </footer>
+  </div>
 </body>
 </html>

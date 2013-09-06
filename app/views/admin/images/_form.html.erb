@@ -1,0 +1,42 @@
+<%= form_for [:admin, @image] do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <p><strong><%= @image.errors.count %> Fehler beim Speichern:</strong><br />&nbsp;</p>
+
+      <ul class="spaced">
+      <% @image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table cellspacing="15">
+    <tbody>
+      <tr>
+        <td><%= f.label :title, 'Titel' %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :description, 'Beschreibung' %></td>
+        <td><%= f.text_area :description %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :file, 'Bild-Datei (kein XCF!)' %></td>
+        <td><%= f.text_field :file %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :sub_category_id, 'Kategorie' %></td>
+        <td><%= if @sub_categories.blank?
+              ('Keine Kategorien vorhanden. ' + link_to('Kategorie erstellen', new_admin_sub_category_path)).html_safe
+            else
+              select :image, :sub_category_id, @sub_categories.map {|sc| [sc.title, sc.id]}
+            end %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit value: 'Bild speichern' %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

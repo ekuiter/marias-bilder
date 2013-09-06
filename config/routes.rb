@@ -1,4 +1,19 @@
 MariasBilder::Application.routes.draw do
+  
+  root to: 'show#latest', as: :show_latest
+  get '/vita', to: 'meta#vita', as: :vita
+  get '/contact', to: 'meta#contact', as: :contact
+  get '/imprint', to: 'meta#imprint', as: :imprint
+  get '/:category/:seo', to: 'show#category'
+  get '/:category/:seo/:sub_category/:seo', to: 'show#sub_category'
+  
+  namespace :admin do
+    get '', to: 'admin#index'
+    resources :images, except: :show
+    resources :categories, except: :show
+    resources :sub_categories, except: :show
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

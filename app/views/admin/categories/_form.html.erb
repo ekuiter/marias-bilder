@@ -1,0 +1,26 @@
+<%= form_for [:admin, @category] do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <p><strong><%= @category.errors.count %> Fehler beim Speichern:</strong><br />&nbsp;</p>
+
+      <ul class="spaced">
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table cellspacing="15">
+    <tbody>
+      <tr>
+        <td><%= f.label :title, 'Bereich' %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit value: 'Bereich speichern' %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

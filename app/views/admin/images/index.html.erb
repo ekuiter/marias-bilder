@@ -1,0 +1,25 @@
+<h2>Bilder</h2>
+
+<p>Hier werden alle deine Bilder angezeigt.</p>
+
+<p><%= link_to 'Neues Bild hinzufügen', new_admin_image_path %></p>
+
+<table>
+  <tr>
+    <th>Titel</th>
+    <th>Datei</th>
+    <th>Bereich</th>
+    <th>Kategorie</th>
+  </tr>
+
+<% @images.each do |image| %>
+  <tr>
+    <td><%= image.title %></td>
+    <td><%= image.file %></td>
+    <td><%= image.sub_category.category.title %></td>
+    <td><%= image.sub_category.title %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_image_path(image) %></td>
+    <td><%= link_to 'Löschen', admin_image_path(image), method: :delete, data: { confirm: 'Bist du sicher?' } %></td>
+  </tr>
+<% end %>
+</table>

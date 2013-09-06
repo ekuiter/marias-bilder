@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #d8debe;
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #464e0f;
+  margin-bottom: 15px;
+}
+
+p {
+  margin-top: 10px;
+  line-height: 1.3em;
+}
+
+a {
+  color: #56640a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6c850f;
+}
+
+a:visited {
+  
+}
+
+ul {
+  list-style-type: none;
+}
+
+header {
+  background: url(header.jpg) no-repeat bottom center;
+  height: 283px;
+}
+
+footer {
+  background: url(footer.jpg) no-repeat center;
+  height: 283px;
+}
+
+#inner {
+  background: url(inner.jpg) repeat-y top;
+  margin: -1px 0;
+}
+
+#container {
+  margin: 0 auto;
+  width: 980px;
+  padding: 10px 10px 10px 20px;
+  min-height: 450px;
+}
+
+#container > nav {
+  float: left;
+  width: 230px;
+  font-size: 14px;
+}
+
+#container > nav ul {
+  list-style-type: none;
+  width: 203px;
+  margin: -10px 0 0 -7px;
+}
+
+#container > nav ul li a {
+  display: block;
+  color: #154b15;
+  text-decoration: none;
+  padding: 7px 15px;
+}
+
+#container > nav ul li a:hover {
+  color: #255b25;
+  background-color: #e2e6d2;
+}
+
+#container > nav ul ul li a {
+  display: block;
+  color: #154b15;
+  text-decoration: none;
+  padding: 5px 0 5px 35px;
+  margin-left: 7px;
+  margin-right: -7px;
+  font-size: 12px;
+}
+
+#container > nav ul li a:hover {
+  color: #255b25;
+  background-color: #e2e6d2;
+}
+
+#container > nav ul li a.current {
+  color: white;
+  background-color: #485700;
+}
+
+#container > nav ul ul li a.current {
+  background-color: #6a7922;
+}
+
+#container > nav hr {
+  border: none;
+  background: url(line.jpg);
+  height: 19px;
+  width: 205px;
+  margin-left: -8px;
+}
+
+#container > nav .secondary ul {
+  margin: 0 0 0 -7px;
+}
+
+#container > nav .secondary small {
+  display: block;
+  margin-top: 10px;
+  padding-left: 7px;
+  font-size: 12px;
+}
+
+#content {
+  margin-left: 220px;
+  width: 750px;
+  padding: 5px 10px;
+}
+
+header a {
+  border: 0;
+  position: absolute;
+  height: 206px; 
+  width: 990px;
+  left: 50%;
+  margin: 56px 0 0 -493px;
+}
+
+ul.spaced li {
+  margin-bottom: 10px;
+}
+
+strong#back {
+  display: block;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+input[type=text], textarea {
+  width: 100%;
+}
+
+textarea {
+  height: 100px;
+}
+
+.notice, .alert {
+  padding: 7px;
+  margin: 7px 0;
+}
+
+.notice {
+  background-color: #abc700;
+}
+
+.alert {
+  background-color: #ffff6f;
+}
+
+.imprint .big {
+  font-size: 17px;
+}
+
+.imprint address.big {
+  font-size: 19px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.6em;
+  text-align: center;
+  background-color: #e2ebb7;
+  padding: 10px;
+  width: 300px;
+  margin: 25px auto;
+}
+
+.imprint h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.imprint p {
+  font-size: 12px;
+}
+
+.italic {
+  font-style: italic;
+}

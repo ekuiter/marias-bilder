@@ -1,0 +1,21 @@
+<h2>Kategorien</h2>
+
+<p>Hier werden alle deine Kategorien angezeigt.</p>
+
+<p><%= link_to 'Neue Kategorie hinzufügen', new_admin_sub_category_path %></p>
+
+<table>
+  <tr>
+    <th>Kategorie</th>
+    <th>Bereich</th>
+  </tr>
+
+<% @sub_categories.each do |sub_category| %>
+  <tr>
+    <td><%= sub_category.title %></td>
+    <td><%= sub_category.category.title %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_sub_category_path(sub_category) %></td>
+    <td><%= link_to 'Löschen', admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN BILDER WERDEN GELÖSCHT!' } %></td>
+  </tr>
+<% end %>
+</table>

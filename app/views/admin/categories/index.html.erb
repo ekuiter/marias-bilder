@@ -1,0 +1,19 @@
+<h2>Bereiche</h2>
+
+<p>Hier werden alle deine Bereiche angezeigt.</p>
+
+<p><%= link_to 'Neuen Bereich hinzufügen', new_admin_category_path %></p>
+
+<table>
+  <tr>
+    <th>Bereich</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.title %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_category_path(category) %></td>
+    <td><%= link_to 'Löschen', admin_category_path(category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN KATEGORIEN & BILDER WERDEN GELÖSCHT!' } %></td>
+  </tr>
+<% end %>
+</table>

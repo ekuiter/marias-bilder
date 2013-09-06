@@ -54,7 +54,7 @@
           </div>
         </nav>
         <div id="content">
-          <%= link_to '<strong id="back">&lt; Zurück zur Verwaltung</strong>'.html_safe, admin_path unless @admin.nil? || controller.controller_name == 'admin' %>
+          <%= link_to '<strong id="back">Zur Verwaltung &gt;</strong>'.html_safe, admin_path unless @admin.nil? || controller.controller_name == 'admin' %>
           <% if flash[:notice] %>
           <div class="notice">
             <%= flash[:notice] %>

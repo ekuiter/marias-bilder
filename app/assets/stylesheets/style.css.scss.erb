@@ -38,17 +38,17 @@ ul {
 }
 
 header {
-  background: url(header.jpg) no-repeat bottom center;
+  background: url(<%= asset_path 'header.jpg' %>) no-repeat bottom center;
   height: 283px;
 }
 
 footer {
-  background: url(footer.jpg) no-repeat center;
+  background: url(<%= asset_path 'footer.jpg' %>) no-repeat center;
   height: 283px;
 }
 
 #inner {
-  background: url(inner.jpg) repeat-y top;
+  background: url(<%= asset_path 'inner.jpg' %>) repeat-y top;
   margin: -1px 0;
 }
 
@@ -109,7 +109,7 @@ footer {
 
 #container > nav hr {
   border: none;
-  background: url(line.jpg);
+  background: url(<%= asset_path 'inner.jpg' %>);
   height: 19px;
   width: 205px;
   margin-left: -8px;

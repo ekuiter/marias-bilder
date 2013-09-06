@@ -25,14 +25,15 @@
         <nav>
           <ul>
             <li><%= link_to 'Startseite', show_latest_path, class: (params[:controller] == 'show' && params[:action] == 'latest' ? 'current' : '') %></li>
+            <li><%= link_to 'Verwaltung', admin_path, class: (params[:controller].include?('admin/') ? 'current' : '') unless @admin.nil? %></li>
           </ul>
           <hr />
           <div class="secondary">
             <ul>
-              <% Category.all.each do |category| %>
+              <% Category.order(:order).each do |category| %>
               <li><%= link_to category.title, "/#{category.id}/#{category.title.urlify}", class: (category == @current_category ? 'current' : '') %></li>
               <ul>
-                <% @nav_sub_categories.each do |sub_category| %>
+                <% @nav_sub_categories.order(:order).each do |sub_category| %>
                   <li><%= link_to sub_category.title, "/#{category.id}/#{category.title.urlify}/#{sub_category.id}/#{sub_category.title.urlify}",
                     class: (sub_category == @current_sub_category ? 'current' : '') %></li>
                 <% end if category == @current_category %>
@@ -54,7 +55,6 @@
           </div>
         </nav>
         <div id="content">
-          <%= link_to '<strong id="back">Zur Verwaltung &gt;</strong>'.html_safe, admin_path unless @admin.nil? || controller.controller_name == 'admin' %>
           <% if flash[:notice] %>
           <div class="notice">
             <%= flash[:notice] %>

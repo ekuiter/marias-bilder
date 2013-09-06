@@ -7,19 +7,19 @@
 <table>
   <tr>
     <th>Titel</th>
-    <th>Datei</th>
+    <th>Vorschau</th>
     <th>Bereich</th>
     <th>Kategorie</th>
   </tr>
 
 <% @images.each do |image| %>
   <tr>
-    <td><%= image.title %></td>
-    <td><%= image.file %></td>
+    <td><%= link_to image.title, image.url %></td>
+    <td><%= image_tag image.thumb, height: 60 %></td>
     <td><%= image.sub_category.category.title %></td>
     <td><%= image.sub_category.title %></td>
-    <td><%= link_to 'Bearbeiten', edit_admin_image_path(image) %></td>
-    <td><%= link_to 'Löschen', admin_image_path(image), method: :delete, data: { confirm: 'Bist du sicher?' } %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_image_path(image) %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Löschen', admin_image_path(image), method: :delete, data: { confirm: 'Bist du sicher?' } %></td>
   </tr>
 <% end %>
 </table>

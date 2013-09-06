@@ -14,8 +14,12 @@
   <table cellspacing="15">
     <tbody>
       <tr>
-        <td><%= f.label :title, 'Bereich' %></td>
+        <td width="150px"><%= f.label :title, 'Bereich' %></td>
         <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :description, 'Beschreibung' %></td>
+        <td><%= f.text_area :description %></td>
       </tr>
       <tr>
         <td></td>

@@ -4,16 +4,20 @@
 
 <p><%= link_to 'Neuen Bereich hinzufügen', new_admin_category_path %></p>
 
+<%= form_tag controller: 'categories', action: 'order' do %>
 <table>
   <tr>
+    <th></th>
     <th>Bereich</th>
   </tr>
-
 <% @categories.each do |category| %>
   <tr>
+    <td style="width:40px"><%= text_field_tag "category[#{category.id}]", category.order, style: 'width:25px' %></td>
     <td><%= category.title %></td>
-    <td><%= link_to 'Bearbeiten', edit_admin_category_path(category) %></td>
-    <td><%= link_to 'Löschen', admin_category_path(category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN KATEGORIEN & BILDER WERDEN GELÖSCHT!' } %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_category_path(category) %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Löschen', admin_category_path(category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN KATEGORIEN & BILDER WERDEN GELÖSCHT!' } %></td>
   </tr>
 <% end %>
 </table>
+<%= submit_tag 'Speichern' %>
+<% end %>

@@ -4,5 +4,6 @@ class SubCategory < ActiveRecord::Base
   belongs_to :category
   
   validates :title, :category, presence: true
+  validates :order, numericality: { only_integer: true }
 
 end

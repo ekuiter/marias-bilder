@@ -3,7 +3,7 @@ class Admin::SubCategoriesController < ApplicationController
   before_filter :admin_required
   
   def index
-    @sub_categories = SubCategory.all
+    @sub_categories = SubCategory.order :order
   end
   
   def new
@@ -42,10 +42,20 @@ class Admin::SubCategoriesController < ApplicationController
     redirect_to admin_sub_categories_path, notice: 'Kategorie wurde erfolgreich gelöscht.'
   end
   
+  def order
+    params[:sub_category].each do |key, value|
+      sub_category = SubCategory.find key
+      sub_category.order = value
+      alert = 'Das Verändern der Reihenfolge ist fehlgeschlagen.' unless sub_category.save
+    end
+    redirect_to admin_sub_categories_path, notice: 'Reihenfolge wurde erfolgreich verändert.' unless alert
+    redirect_to admin_sub_categories_path, alert: alert if alert
+  end
+  
   private
 
   def sub_category_params
-    params.require(:sub_category).permit(:title, :category_id)
+    params.require(:sub_category).permit(:title, :description, :category_id)
   end
   
 

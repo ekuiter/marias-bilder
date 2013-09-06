@@ -1,3 +1,20 @@
 <h2>Startseite</h2>
 
-...
+<p>Willkommen auf der Webseite von Maria Klara Kuiter!</p>
+
+<p>Hier sehen Sie auf einen Blick meine neuesten Bilder:<p>
+  
+<table class="thumbs">
+  <tbody>
+    <tr>
+    <% i = 0; @latest.each do |image| %>
+    <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
+      <td><a href="<%= image.url %>"><%= image_tag image.thumb, width: 230 %>
+        <h4><%= image.title %></h4></a></td>
+    <% i+=1; end %>
+    <% (3 - i).times do %>
+      <td></td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,6 @@
+<h2><%= @image.title %></h2>
+<h4><%= link_to '&lt; Zurück'.html_safe, 'javascript:history.back()' %> | abgelegt in <%= @current_category.title %>: <%= @current_sub_category.title %></h4>
+
+<%= image_tag @image.large, width: 750 %>
+
+<p><%= @image.description %></p>

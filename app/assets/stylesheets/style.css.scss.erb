@@ -61,7 +61,7 @@ footer {
 
 #container > nav {
   float: left;
-  width: 230px;
+  width: 225px;
   font-size: 14px;
 }
 
@@ -75,7 +75,8 @@ footer {
   display: block;
   color: #154b15;
   text-decoration: none;
-  padding: 7px 15px;
+  padding: 7px 0 7px 30px;
+  background: url(<%= asset_path 'bullet.png' %>) no-repeat 5px;
 }
 
 #container > nav ul li a:hover {
@@ -91,6 +92,7 @@ footer {
   margin-left: 7px;
   margin-right: -7px;
   font-size: 12px;
+  background: none;
 }
 
 #container > nav ul li a:hover {
@@ -100,11 +102,11 @@ footer {
 
 #container > nav ul li a.current {
   color: white;
-  background-color: #485700;
+  background: #485700 url(<%= asset_path 'bullet-hover.png' %>) no-repeat 5px;
 }
 
 #container > nav ul ul li a.current {
-  background-color: #6a7922;
+  background: #6a7922 url(<%= asset_path 'bullet-hover.png' %>) no-repeat 5px;
 }
 
 #container > nav hr {
@@ -143,13 +145,6 @@ header a {
 
 ul.spaced li {
   margin-bottom: 10px;
-}
-
-strong#back {
-  display: block;
-  margin-bottom: 20px;
-  float: right;
-  margin-right: 10px;
 }
 
 table {
@@ -204,4 +199,42 @@ textarea {
 
 .italic {
   font-style: italic;
+}
+
+table {
+  margin: 10px 0;
+}
+
+table td {
+  padding: 4px;
+}
+
+table th {
+  padding: 8px 4px;
+}
+
+table.thumbs {
+  margin-left: -10px;
+}
+
+table.thumbs td {
+  text-align: center;
+  width: 33%;
+}
+
+table.thumbs td h4 {
+  margin: 7px 0 0 0;
+}
+
+table.thumbs td a {
+  display: block;
+  padding: 7px;
+}
+
+table.thumbs td a:hover {
+  background-color: #485700;
+}
+
+table.thumbs td a:hover h4 {
+  color: white;
 }

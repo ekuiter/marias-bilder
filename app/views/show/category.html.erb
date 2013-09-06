@@ -1,3 +1,19 @@
 <h2><%= @current_category.title %></h2>
 
-...
+<p><%= @current_category.description %></p>
+
+<table class="thumbs">
+  <tbody>
+    <tr>
+    <% i = 0; @current_category.sub_categories.each do |sub_category|
+    sub_category.images.each do |image| %>
+    <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
+      <td><a href="<%= image.url %>"><%= image_tag image.thumb, width: 230 %>
+        <h4><%= image.title %></h4></a></td>
+    <% i+=1; end; end %>
+    <% (3 - i).times do %>
+      <td></td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>

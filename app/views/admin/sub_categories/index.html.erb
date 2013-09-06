@@ -4,18 +4,22 @@
 
 <p><%= link_to 'Neue Kategorie hinzufügen', new_admin_sub_category_path %></p>
 
+<%= form_tag controller: 'sub_categories', action: 'order' do %>
 <table>
   <tr>
+    <th></th>
     <th>Kategorie</th>
     <th>Bereich</th>
   </tr>
-
 <% @sub_categories.each do |sub_category| %>
   <tr>
+    <td style="width:40px"><%= text_field_tag "sub_category[#{sub_category.id}]", sub_category.order, style: 'width:25px' %></td>
     <td><%= sub_category.title %></td>
     <td><%= sub_category.category.title %></td>
-    <td><%= link_to 'Bearbeiten', edit_admin_sub_category_path(sub_category) %></td>
-    <td><%= link_to 'Löschen', admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN BILDER WERDEN GELÖSCHT!' } %></td>
+    <td><%= link_to 'Bearbeiten', edit_admin_sub_category_path(sub_category) %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Löschen', admin_sub_category_path(sub_category), method: :delete, data: { confirm: 'Bist du sicher? ALLE ZUGEHÖRIGEN BILDER WERDEN GELÖSCHT!' } %></td>
   </tr>
 <% end %>
 </table>
+<%= submit_tag 'Speichern' %>
+<% end %>

@@ -22,4 +22,20 @@ class Image < ActiveRecord::Base
        seo_image: title.urlify
   end
   
+  def previous
+    array = sub_category.images
+    hash = Hash[array.map.with_index.to_a]
+    index = hash[self]
+    return nil if index == 0
+    array[index - 1]
+  end
+  
+  def next
+    array = sub_category.images
+    hash = Hash[array.map.with_index.to_a]
+    index = hash[self]
+    return nil if index > hash.values.max
+    array[index + 1]
+  end
+  
 end

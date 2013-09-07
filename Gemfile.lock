@@ -59,6 +59,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.3.0)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -139,6 +140,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  mail_form
   meta_request
   newrelic_rpm
   pg

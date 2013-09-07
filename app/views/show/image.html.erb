@@ -1,6 +1,10 @@
-<h2><%= @image.title %></h2>
+<h2 id="show"><%= @image.title %></h2>
+
+<div id="navigator">
+  <%= link_to '&lt; Vorheriges Bild'.html_safe, "#{@image.previous.url}#show" unless @image.previous.nil? %> <%= '|' unless @image.previous.nil? || @image.next.nil? %> <%= link_to 'Nächstes Bild &gt;'.html_safe, "#{@image.next.url}#show" unless @image.next.nil? %>
+</div>
+
 <h4><%= link_to '&lt; Zurück'.html_safe, 'javascript:history.back()' %> | abgelegt in <%= @current_category.title %>: <%= @current_sub_category.title %></h4>
 
-<%= image_tag @image.large, width: 750 %>
-
-<p><%= @image.description %></p>
+<%= link_to image_tag(@image.large, width: 750), @image.large, class: :zoom %>
+<p><%= @image.description %>&nbsp;</p>

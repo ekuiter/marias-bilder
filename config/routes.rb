@@ -9,11 +9,9 @@ MariasBilder::Application.routes.draw do
     post 'sub_categories/order', to: 'sub_categories#order'
   end
   
-  get 'contact', to: 'contact#index', as: :contact
-  post 'contact', to: 'contact#dispatch_email', as: :dispatch_email
-  
   root to: 'show#latest', as: :show_latest
   get '/vita', to: 'meta#vita', as: :vita
+  get '/contact', to: 'meta#contact', as: :contact
   get '/imprint', to: 'meta#imprint', as: :imprint
   get '/:category/:seo_category', to: 'show#category'
   get '/:category/:seo_category/:sub_category/:seo_sub_category', to: 'show#sub_category'

@@ -8,7 +8,7 @@ class ContactForm < MailForm::Base
     {
       subject: "marias-bilder.de - Kontaktformular",
       to: "maria@marias-bilder.de",
-      from: => "\"#{name}\" <#{email}>"
+      from: "\"#{name}\" <#{email}>"
     }
   end
 end

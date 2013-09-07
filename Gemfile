@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'newrelic_rpm'
 gem 'pg'
-gem 'mail_form'
 
 group :doc do
   gem 'sdoc', require: false

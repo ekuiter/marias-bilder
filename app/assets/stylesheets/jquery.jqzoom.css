@@ -69,7 +69,7 @@
   z-index:110;
 }
 .zoomWrapper{
-	position:relative;
+	position:fixed;
 	border:1px solid #999;
   z-index:110;
 }

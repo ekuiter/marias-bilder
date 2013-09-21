@@ -5,7 +5,7 @@
 <table class="thumbs">
   <tbody>
     <tr>
-    <% i = 0; @current_category.sub_categories.each do |sub_category|
+    <% i = 0; @current_category.sub_categories.order(:order).each do |sub_category|
     sub_category.images.order(:order).each do |image| %>
     <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
       <td><a href="<%= image.url %>"><%= image_tag image.thumb, width: 230 %>

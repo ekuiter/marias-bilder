@@ -8,7 +8,7 @@
   <tbody>
     <tr>
     <% i = 0; @categories.each do |category|
-    image = category.sub_categories.first.images.order(:order).first
+    image = category.sub_categories.order(:order).first.images.order(:order).first
     next unless image %>
     <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
       <td>

@@ -23,7 +23,7 @@ class Image < ActiveRecord::Base
   end
   
   def previous
-    array = sub_category.images
+    array = sub_category.images.order(:order)
     hash = Hash[array.map.with_index.to_a]
     index = hash[self]
     return nil if index == 0
@@ -31,7 +31,7 @@ class Image < ActiveRecord::Base
   end
   
   def next
-    array = sub_category.images
+    array = sub_category.images.order(:order)
     hash = Hash[array.map.with_index.to_a]
     index = hash[self]
     return nil if index > hash.values.max

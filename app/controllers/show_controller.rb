@@ -3,7 +3,7 @@ class ShowController < ApplicationController
   before_filter :admin_required
 
   def latest
-    @latest = Image.order(:updated_at).reverse[0..5]
+    @categories = Category.order(:order)
   end
 
   def category

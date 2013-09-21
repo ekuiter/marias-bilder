@@ -4,22 +4,28 @@
 
 <p><%= link_to 'Neues Bild hinzufügen', new_admin_image_path %></p>
 
+<%= form_tag controller: 'images', action: 'order' do %>
 <table>
   <tr>
+    <th></th>
     <th>Titel</th>
     <th>Vorschau</th>
     <th>Bereich</th>
     <th>Kategorie</th>
   </tr>
-
-<% @images.each do |image| %>
+<% @sub_categories.each do |sub_category| %>
+<% sub_category.images.order(:order).each do |image| %>
   <tr>
-    <td><%= link_to image.title, image.url %></td>
-    <td><%= image_tag image.thumb, height: 60 %></td>
-    <td><%= image.sub_category.category.title %></td>
-    <td><%= image.sub_category.title %></td>
+    <td style="width:40px"><%= text_field_tag "image[#{image.id}]", image.order, style: 'width:25px' %></td>
+    <td style="text-align:left"><%= link_to image.title, image.url %></td>
+    <td><%= image_tag image.thumb, width: 80 %></td>
+    <td style="font-size:13px"><%= image.sub_category.category.title %></td>
+    <td style="font-size:13px"><%= image.sub_category.title %></td>
     <td><%= link_to 'Bearbeiten', edit_admin_image_path(image) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to 'Löschen', admin_image_path(image), method: :delete, data: { confirm: 'Bist du sicher?' } %></td>
   </tr>
 <% end %>
+<% end %>
 </table>
+<%= submit_tag 'Speichern' %>
+<% end %>

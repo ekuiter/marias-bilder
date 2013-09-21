@@ -38,7 +38,7 @@ class Admin::ImagesController < ApplicationController
   end
   
   def index
-    @images = Image.all
+    @sub_categories = SubCategory.order(:order)
   end
   
   def new
@@ -83,6 +83,16 @@ class Admin::ImagesController < ApplicationController
     delete_image_file @image
     @image.destroy
     redirect_to admin_images_path, notice: 'Bild wurde erfolgreich gelöscht.'
+  end
+  
+  def order
+    params[:image].each do |key, value|
+      image = Image.find key
+      image.order = value
+      alert = 'Das Verändern der Reihenfolge ist fehlgeschlagen.' unless image.save
+    end
+    redirect_to admin_images_path, notice: 'Reihenfolge wurde erfolgreich verändert.' unless alert
+    redirect_to admin_images_path, alert: alert if alert
   end
   
   private

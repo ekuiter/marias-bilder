@@ -7,13 +7,14 @@ MariasBilder::Application.routes.draw do
     resources :sub_categories, except: :show
     post 'categories/order', to: 'categories#order'
     post 'sub_categories/order', to: 'sub_categories#order'
+    post 'images/order', to: 'images#order'
   end
   
   root to: 'show#latest', as: :show_latest
   get '/vita', to: 'meta#vita', as: :vita
   get '/contact', to: 'meta#contact', as: :contact
   get '/imprint', to: 'meta#imprint', as: :imprint
-  get '/:category/:seo_category', to: 'show#category'
+  get '/:category/:seo_category', to: 'show#category', as: :show_category
   get '/:category/:seo_category/:sub_category/:seo_sub_category', to: 'show#sub_category'
   get '/:category/:seo_category/:sub_category/:seo_sub_category/:image/:seo_image', to: 'show#image', as: :show_image
   

@@ -38,7 +38,7 @@ class Admin::ImagesController < ApplicationController
   end
   
   def index
-    @sub_categories = SubCategory.order(:order)
+    @categories = Category.order(:order)
   end
   
   def new

@@ -13,8 +13,8 @@
     <th>Bereich</th>
     <th>Kategorie</th>
   </tr>
-<% @sub_categories.each do |sub_category| %>
-<% sub_category.images.order(:order).each do |image| %>
+<% @categories.each do |category| %>
+<% category.images.order(:order).each do |image| %>
   <tr>
     <td style="width:40px"><%= text_field_tag "image[#{image.id}]", image.order, style: 'width:25px' %></td>
     <td style="text-align:left"><%= link_to image.title, image.url %></td>

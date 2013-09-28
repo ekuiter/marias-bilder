@@ -5,12 +5,11 @@
 <table class="thumbs">
   <tbody>
     <tr>
-    <% i = 0; @current_category.sub_categories.order(:order).each do |sub_category|
-    sub_category.images.order(:order).each do |image| %>
+    <% i = 0; @current_category.images.order("created_at DESC").each do |image| %>
     <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
       <td><a href="<%= image.url %>"><%= image_tag image.thumb, width: 230 %>
         <h4><%= image.title %></h4></a></td>
-    <% i+=1; end; end %>
+    <% i+=1; end %>
     <% (3 - i).times do %>
       <td></td>
     <% end %>

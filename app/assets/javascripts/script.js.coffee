@@ -1,5 +1,5 @@
 func = ->
-  $("header a").hover (->
+  $("header a#title").hover (->
     $("header").css "background-position", "top"
   ), ->
     $("header").css "background-position", "bottom"

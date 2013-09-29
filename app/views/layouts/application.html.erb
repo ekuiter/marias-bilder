@@ -18,7 +18,10 @@
 <body>
   <div id="wrapper">
     <header>
-      <a href="/"></a>  
+      <%= link_to '', show_latest_path, id: :title %>
+      <div id="side">
+        <%= link_to image_tag('deviantart.png', style: 'display: block; margin: 0 auto') + '<br />DeviantArt'.html_safe, 'http://mariaklarakuiter.deviantart.com', target: :_blank %>
+      </div>
     </header>
     <div id="inner">
       <div id="container">

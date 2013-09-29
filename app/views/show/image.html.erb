@@ -7,4 +7,4 @@
 <h4><%= link_to '&lt; Zurück'.html_safe, 'javascript:history.back()' %> | abgelegt in <%= @current_category.title %>: <%= @current_sub_category.title %></h4>
 
 <%= link_to image_tag(@image.large, width: 750), @image.large, class: :zoom %>
-<p><%= @image.description %>&nbsp;</p>
+<p><%= raw @image.description %>&nbsp;</p>

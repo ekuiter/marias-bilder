@@ -1,6 +1,7 @@
 class Admin::ImagesController < ApplicationController
 
   before_filter :admin_required
+  
   require 'net/http'
   require 'net/ftp'
   require 'cgi'

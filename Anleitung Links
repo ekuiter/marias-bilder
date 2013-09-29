@@ -1,0 +1,46 @@
+marias-bilder.de: Verlinkungen anlegen
+======================================
+
+In der VERWALTUNG zum entsprechenden BILD wechseln. In der BESCHREIBUNG folgende Zeile einfügen:
+
+<a href="http://LINKZIEL" target="_blank">LINKTEXT</a>
+         |             |  |             | |      |
+         |             |  |             | |      |
+         Die Internetadresse, z.B. http://google.de (mit http:// !!)
+                          |             | |      |
+                          |             | |      |
+                          sorgt dafür, dass die Seite im neuen Tab geöffnet wird.
+                                          |      |
+                                          |      |
+                                          dieser Text wird anklickbar und unterstrichen angezeigt.
+                                          
+Beispiel:
+
+<a                                             - Linkanfang
+  href="http://www.katechese-fuer-alle.de"     - Linkziel
+  target="_blank">                             - neuer Tab
+    www.katechese-fuer-alle.de                 - Linktext
+</a>                                           - Linkende
+
+oder in einer Zeile:
+
+<a href="http://www.katechese-fuer-alle.de" target="_blank">www.katechese-fuer-alle.de</a>
+
+________________________________________________
+
+Um in der Beschreibung Zeilenumbrüche einzufügen
+================================================
+
+Dazu wird ein <br /> eingefügt.
+
+Beispiel: 
+
+Dieser Satz soll umbrochen werden, ist es aber noch nicht.
+
+Dieser Satz soll umbrochen werden, <br /> und ist es nun auch.
+
+(Das hier:
+     Dieser Satz soll umbrochen werden,
+     <br />
+     und ist es nun auch.
+oder Ähnliches wäre auch OK.)

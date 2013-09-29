@@ -1,7 +1,5 @@
 class ShowController < ApplicationController
 
-  before_filter :admin_required
-
   def latest
     @categories = Category.order(:order)
   end

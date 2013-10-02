@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.0'
@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'pg'
+gem 'rails_12factor'
+gem 'unicorn'
 
 group :doc do
   gem 'sdoc', require: false
@@ -18,9 +20,4 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-end
-
-group :production do
-  gem 'thin'
-  gem 'rails_12factor'
 end

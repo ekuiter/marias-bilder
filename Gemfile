@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'pg'
 gem 'rails_12factor'
 gem 'unicorn'
+gem 'google-analytics-rails'
 
 group :doc do
   gem 'sdoc', require: false

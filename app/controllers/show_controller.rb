@@ -1,7 +1,7 @@
 class ShowController < ApplicationController
 
   def latest
-    @categories = Category.order(:order)
+    @images = Image.latest
   end
 
   def category

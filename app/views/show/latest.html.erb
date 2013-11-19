@@ -7,13 +7,11 @@
 <table class="thumbs">
   <tbody>
     <tr>
-    <% i = 0; @categories.each do |category|
-    image = category.sub_categories.order(:order).first.images.order(:order).first
-    next unless image %>
+    <% i = 0; @images.each do |image| %>
     <%= '</tr><tr>'.html_safe if i % 3 == 0 %>
       <td>
-        <a href="<%= category.url %>"><%= image_tag image.thumb, width: 230 %>
-        <h4><%= category.title %></h4></a></td>
+        <a href="<%= image.sub_category.category.url %>"><%= image_tag image.thumb, width: 230 %>
+        <h4><%= image.sub_category.category.title %></h4></a></td>
     <% i+=1; end %>
     <% (3 - i).times do %>
       <td></td>

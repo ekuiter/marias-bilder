@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921074640) do
+ActiveRecord::Schema.define(version: 20131119145114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20130921074640) do
     t.text     "description"
     t.integer  "sub_category_id"
     t.integer  "order",           default: 0
+    t.integer  "homepage"
   end
 
   create_table "sub_categories", force: true do |t|

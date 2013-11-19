@@ -38,4 +38,8 @@ class Image < ActiveRecord::Base
     array[index + 1]
   end
   
+  def self.latest
+    where.not(homepage: 0).order(:homepage)
+  end
+  
 end

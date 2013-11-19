@@ -99,7 +99,7 @@ class Admin::ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :description, :sub_category_id)
+    params.require(:image).permit(:title, :description, :sub_category_id, :homepage)
   end
 
 end

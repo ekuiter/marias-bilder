@@ -1,0 +1,12 @@
+admin:
+  username:
+  password:
+upload:
+  host:
+  username:
+  password:
+  root:
+resize:
+  host:
+  script:
+  password:

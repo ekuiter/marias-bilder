@@ -10,18 +10,22 @@ class Admin::ImagesController < ApplicationController
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k, v| "#{k}=#{CGI::escape(v.to_s)}" }.join('&'))) unless params.nil?
     return Net::HTTP.get(domain, path)
   end
+  
+  def ftp_client
+    Net::FTP.new Settings.new['upload']['host'], Settings.new['upload']['username'], Settings.new['upload']['password']
+  end
 
   def upload_image_file image, file
     return false unless file
-    ftp = Net::***REMOVED***, '***REMOVED***', '***REMOVED***'
+    ftp = ftp_client
     ftp.passive = true
-    ftp.chdir "***REMOVED***"    
+    ftp.chdir Settings.new['upload']['root']
     ftp.storbinary "STOR #{image.id}#{File.extname(file.original_filename).downcase}", 
       StringIO.new(file.read),
       Net::FTP::DEFAULT_BLOCKSIZE
     ftp.quit
-    res = ***REMOVED***, "***REMOVED***",
-                   {pass: "***REMOVED***",
+    res = http_get Settings.new['resize']['host'], Settings.new['resize']['script'],
+                   {pass: Settings.new['resize']['password'],
                     image: image.id, ext: File.extname(file.original_filename).downcase.gsub(".", "")}
     logger.debug "Image #{image.id} resized: " + res
     return true if res.include? "Success"
@@ -30,9 +34,9 @@ class Admin::ImagesController < ApplicationController
   end
   
   def delete_image_file image
-    ftp = Net::***REMOVED***, '***REMOVED***', '***REMOVED***'
+    ftp = ftp_client
     ftp.passive = true
-    ftp.chdir "***REMOVED***"
+    ftp.chdir Settings.new['upload']['root']
     ftp.delete "#{image.id}l.jpg"
     ftp.delete "#{image.id}s.jpg"
     ftp.quit

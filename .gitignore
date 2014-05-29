@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 /design
+/config/database.yml
+/config/marias-bilder.yml

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
     def admin_required
       authenticate_or_request_with_http_basic do |user_name, password|
-        user_name == Settings.new['admin']['username'] && password == Settings.new['admin']['password']
+        user_name == Settings.get('admin.username') && password == Settings.get('admin.password')
       end
       @admin = true
     end

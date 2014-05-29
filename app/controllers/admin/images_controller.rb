@@ -12,20 +12,20 @@ class Admin::ImagesController < ApplicationController
   end
   
   def ftp_client
-    Net::FTP.new Settings.new['upload']['host'], Settings.new['upload']['username'], Settings.new['upload']['password']
+    Net::FTP.new Settings.get('upload.host'), Settings.get('upload.username'), Settings.get('upload.password')
   end
 
   def upload_image_file image, file
     return false unless file
     ftp = ftp_client
     ftp.passive = true
-    ftp.chdir Settings.new['upload']['root']
+    ftp.chdir Settings.get('upload.root')
     ftp.storbinary "STOR #{image.id}#{File.extname(file.original_filename).downcase}", 
       StringIO.new(file.read),
       Net::FTP::DEFAULT_BLOCKSIZE
     ftp.quit
-    res = http_get Settings.new['resize']['host'], Settings.new['resize']['script'],
-                   {pass: Settings.new['resize']['password'],
+    res = http_get Settings.get('resize.host'), Settings.get('resize.script'),
+                   {pass: Settings.get('resize.password'),
                     image: image.id, ext: File.extname(file.original_filename).downcase.gsub(".", "")}
     logger.debug "Image #{image.id} resized: " + res
     return true if res.include? "Success"
@@ -36,7 +36,7 @@ class Admin::ImagesController < ApplicationController
   def delete_image_file image
     ftp = ftp_client
     ftp.passive = true
-    ftp.chdir Settings.new['upload']['root']
+    ftp.chdir Settings.get('upload.root')
     ftp.delete "#{image.id}l.jpg"
     ftp.delete "#{image.id}s.jpg"
     ftp.quit

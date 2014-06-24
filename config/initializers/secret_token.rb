@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-MariasBilder::Application.config.secret_key_base = 'da621def6ad15860dbf9f777804f2de48607cecba6fea10a6e57db6da7cc3a1b444ea79457f68d79141a76db83d2a0aa4fb0c832aa836c52152698c70a84bf6b'
+MariasBilder::Application.config.secret_key_base = Settings.get('secret_key')
